@@ -51,10 +51,10 @@ public class BuildKieBaseFromContainerBenchmark {
     @Param({"true"})
     private boolean useCanonicalModel;
 
-    @Param({"1000"})
+    @Param({"100"})
     private int numberOfRules;
 
-    @Param({SimpleRulesWithConstraintsProvider.PROVIDER_ID})
+    @Param({RulesWithJoinsProvider.PROVIDER_ID})
     private String rulesProviderId;
 
     private ReleaseId releaseId;
