@@ -48,13 +48,13 @@ import org.openjdk.jmh.annotations.Warmup;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class BuildKieBaseFromContainerBenchmark {
 
-    @Param({"true", "false"})
+    @Param({"true"})
     private boolean useCanonicalModel;
 
-    @Param({"100", "500", "1000", "3000", "5000", "10000"})
+    @Param({"100"})
     private int numberOfRules;
 
-    @Param({SimpleRulesWithConstraintsProvider.PROVIDER_ID, RulesWithJoinsProvider.PROVIDER_ID})
+    @Param({RulesWithJoinsProvider.PROVIDER_ID})
     private String rulesProviderId;
 
     private ReleaseId releaseId;
