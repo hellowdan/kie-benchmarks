@@ -45,10 +45,10 @@ import org.openjdk.jmh.annotations.Warmup;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class BuildKJarFromResourceBenchmark {
 
-    @Param({"true", "false"})
+    @Param({"true"})
     private boolean useCanonicalModel;
 
-    @Param({"1000", "2000"})
+    @Param({"1000"})
     private int numberOfRules;
 
     private Resource drlResource;
