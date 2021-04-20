@@ -19,9 +19,13 @@ package org.drools.benchmarks.turtle.buildtime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import org.drools.compiler.kie.builder.impl.DrlProject;
+import org.drools.modelcompiler.ExecutableModelProject;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieFileSystem;
+import org.kie.api.conf.KieBaseOption;
 import org.kie.api.io.KieResources;
 import org.kie.api.io.Resource;
 import org.kie.internal.utils.KieHelper;
@@ -66,12 +70,12 @@ public abstract class AbstractBuildtimeBenchmark {
      *
      * @return number of packages in the kbase
      */
-    protected int actuallyCreateTheKBase() {
+    protected int actuallyCreateTheKBase(boolean useCanonicalModel, final KieBaseOption... kieBaseOptions) {
         KieHelper kieHelper = new KieHelper();
         for (Resource resource : resources) {
             kieHelper.addResource(resource);
         }
-        KieBase kieBase = kieHelper.build();
+        KieBase kieBase = kieHelper.build(useCanonicalModel ? ExecutableModelProject.class : DrlProject.class, kieBaseOptions);
         int nrOfPackages = kieBase.getKiePackages().size();
         return nrOfPackages;
     }

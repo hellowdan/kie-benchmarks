@@ -30,6 +30,9 @@ public class KBaseCreationFromDrlBenchmark extends AbstractBuildtimeBenchmark {
     @Param({"1k", "5k", "10k"})
     private String nrOfRules;
 
+    @Param({"true", "false"})
+    private boolean useCanonicalModel;
+
     @Setup
     public void addResources() {
         addClassPathResource("kbase-creation/drl-kbase-creation-" + nrOfRules + ".drl");
@@ -37,7 +40,7 @@ public class KBaseCreationFromDrlBenchmark extends AbstractBuildtimeBenchmark {
 
     @Benchmark
     public int timeKBaseCreationFromDrl() {
-        return actuallyCreateTheKBase();
+        return actuallyCreateTheKBase(useCanonicalModel);
     }
 
 }

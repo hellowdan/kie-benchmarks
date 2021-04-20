@@ -33,7 +33,7 @@ public class KBaseCreationFromDslAndDslrBenchmark extends AbstractBuildtimeBench
     @Benchmark
     public int timeBaseCreationFromSimpleDslrAndDsl() {
 
-        return actuallyCreateTheKBase();
+        return actuallyCreateTheKBase(false);
     }
 
 }

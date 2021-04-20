@@ -39,7 +39,7 @@ public class KBaseCreationFromMultipleResourcesBenchmark extends AbstractBuildti
     @Benchmark
     public int timeKBaseCreationFromMultipleResources() {
 
-        return actuallyCreateTheKBase();
+        return actuallyCreateTheKBase(false);
     }
 
 }
