@@ -55,7 +55,8 @@ import org.openjdk.jmh.annotations.Warmup;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public abstract class AbstractSimpleRuntimeBenchmark {
 
-    @Param({"true", "false"})
+    @Param({"true"})
+//    @Param({"true", "false"})
     private boolean useCanonicalModel;
 
     protected KieServices kieServices = KieServices.Factory.get();
