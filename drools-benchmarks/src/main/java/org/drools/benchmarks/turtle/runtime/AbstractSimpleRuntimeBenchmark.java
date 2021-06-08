@@ -27,6 +27,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.drools.benchmarks.turtle.runtime.generator.FactsGenerator;
 import org.drools.benchmarks.turtle.runtime.generator.ResourceGenerator;
+import org.drools.compiler.kie.builder.impl.DrlProject;
+import org.drools.modelcompiler.ExecutableModelProject;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.conf.KieBaseOption;
@@ -41,6 +43,7 @@ import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -53,6 +56,9 @@ import org.openjdk.jmh.annotations.Warmup;
 @Measurement(iterations = 20)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public abstract class AbstractSimpleRuntimeBenchmark {
+
+    @Param({"true", "false"})
+    private boolean useCanonicalModel;
 
     protected KieServices kieServices = KieServices.Factory.get();
     protected KieResources kieResources = KieServices.Factory.get().getResources();
@@ -81,7 +87,7 @@ public abstract class AbstractSimpleRuntimeBenchmark {
         for (Resource resource : resources) {
             kieHelper.addResource(resource);
         }
-        kieBase = kieHelper.build(getKieBaseOptions());
+        kieBase = kieHelper.build(useCanonicalModel ? ExecutableModelProject.class : DrlProject.class, getKieBaseOptions());
     }
 
     protected KieBaseOption[] getKieBaseOptions() {
