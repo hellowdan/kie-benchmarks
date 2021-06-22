@@ -1,4 +1,4 @@
-package org.drools.benchmarks.bre;
+﻿package org.drools.benchmarks.bre;
 import java.util.ArrayList
 import org.drools.benchmarks.model.*;
 // Basic rule template which contains place holders started by @ (e.g. @{row.rowNumber})
