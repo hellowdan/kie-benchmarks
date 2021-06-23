@@ -167,4 +167,7 @@ public abstract class AbstractSimpleRuntimeBenchmark {
         return statelessKieSession;
     }
 
+    public void setUseCanonicalModel(boolean useCanonicalModel) {
+        this.useCanonicalModel = useCanonicalModel;
+    }
 }

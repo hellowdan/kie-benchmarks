@@ -19,6 +19,7 @@ package org.drools.benchmarks.turtle.runtime;
 import java.io.IOException;
 
 public class TurtleBenchmarkRunner {
+
     /**
      * When run, JVM option -Ddrools.multithreadEvaluation=true must be set.
      *
@@ -29,9 +30,11 @@ public class TurtleBenchmarkRunner {
         // Choose your benchmark here
         // Any benchmark that extends AbstractSimpleRuntimeBenchmark can be put here
         // (except CEP benchmarks, see TurtleFusionBenchmarkRunner).
-        final RetractFactsFromWmExpertBenchmark benchmark = new RetractFactsFromWmExpertBenchmark();
+//        final RetractFactsFromWmExpertBenchmark benchmark = new RetractFactsFromWmExpertBenchmark();
 //        final AdvOperators3ExpertBenchmark benchmark = new AdvOperators3ExpertBenchmark();
         // final UpdateFactsInWmExpertBenchmark benchmark = new UpdateFactsInWmExpertBenchmark();
+        final AdvOperators4ExpertBenchmark benchmark = new AdvOperators4ExpertBenchmark();
+        benchmark.setUseCanonicalModel(true);
         benchmark.createKBase();
         benchmark.initFactsGenerators();
         for (int i = 1; i <= 100; i++) {
